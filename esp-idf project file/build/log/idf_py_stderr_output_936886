@@ -1,0 +1,12 @@
+CMake Error at /home/abdellah/esp-idf/tools/cmake/build.cmake:542 (message):
+  HINT: Please check manifest file of the following component(s):
+  ep_analog_read, ep_wifi, esp-idf-rc522
+
+  ERROR: Because project depends on idf (^4.1) which doesn't match any
+  versions, version solving failed.
+
+Call Stack (most recent call first):
+  /home/abdellah/esp-idf/tools/cmake/project.cmake:447 (idf_build_process)
+  CMakeLists.txt:8 (project)
+
+

@@ -1,0 +1,10 @@
+CMake Error at /home/abdellah/esp-idf/tools/cmake/build.cmake:265 (message):
+  Failed to resolve component 'drive'.
+Call Stack (most recent call first):
+  /home/abdellah/esp-idf/tools/cmake/build.cmake:301 (__build_resolve_and_add_req)
+  /home/abdellah/esp-idf/tools/cmake/build.cmake:597 (__build_expand_requirements)
+  /home/abdellah/esp-idf/tools/cmake/project.cmake:447 (idf_build_process)
+  CMakeLists.txt:8 (project)
+
+
+ninja: error: rebuilding 'build.ninja': subcommand failed

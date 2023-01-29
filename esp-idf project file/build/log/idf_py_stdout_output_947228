@@ -1,0 +1,104 @@
+[0/1] Re-running CMake...
+-- Building ESP-IDF components for target esp32
+-- Project sdkconfig file /home/abdellah/esp-idf/ep_smart_house/sdkconfig
+-- App "ep_smart_house" version: 9d9e43b-dirty
+-- Adding linker script /home/abdellah/esp-idf/ep_smart_house/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_system/ld/esp32/sections.ld.in
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-data.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.syscalls.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld
+-- Adding linker script /home/abdellah/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld
+-- Components: app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse ep_analog_read ep_wifi esp-idf-rc522 esp-tls esp_adc esp_app_format esp_common esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_netif esp_netif_stack esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_system esp_timer esp_wifi espcoredump esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash openthread partition_table perfmon protobuf-c protocomm pthread sdmmc soc spi_flash spiffs tcp_transport ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: /home/abdellah/esp-idf/components/app_trace /home/abdellah/esp-idf/components/app_update /home/abdellah/esp-idf/components/bootloader /home/abdellah/esp-idf/components/bootloader_support /home/abdellah/esp-idf/components/bt /home/abdellah/esp-idf/components/cmock /home/abdellah/esp-idf/components/console /home/abdellah/esp-idf/components/cxx /home/abdellah/esp-idf/components/driver /home/abdellah/esp-idf/components/efuse /home/abdellah/esp-idf/components/ep_analog_read /home/abdellah/esp-idf/components/ep_wifi /home/abdellah/esp-idf/components/esp-idf-rc522 /home/abdellah/esp-idf/components/esp-tls /home/abdellah/esp-idf/components/esp_adc /home/abdellah/esp-idf/components/esp_app_format /home/abdellah/esp-idf/components/esp_common /home/abdellah/esp-idf/components/esp_eth /home/abdellah/esp-idf/components/esp_event /home/abdellah/esp-idf/components/esp_gdbstub /home/abdellah/esp-idf/components/esp_hid /home/abdellah/esp-idf/components/esp_http_client /home/abdellah/esp-idf/components/esp_http_server /home/abdellah/esp-idf/components/esp_https_ota /home/abdellah/esp-idf/components/esp_https_server /home/abdellah/esp-idf/components/esp_hw_support /home/abdellah/esp-idf/components/esp_lcd /home/abdellah/esp-idf/components/esp_local_ctrl /home/abdellah/esp-idf/components/esp_netif /home/abdellah/esp-idf/components/esp_netif_stack /home/abdellah/esp-idf/components/esp_partition /home/abdellah/esp-idf/components/esp_phy /home/abdellah/esp-idf/components/esp_pm /home/abdellah/esp-idf/components/esp_psram /home/abdellah/esp-idf/components/esp_ringbuf /home/abdellah/esp-idf/components/esp_rom /home/abdellah/esp-idf/components/esp_system /home/abdellah/esp-idf/components/esp_timer /home/abdellah/esp-idf/components/esp_wifi /home/abdellah/esp-idf/components/espcoredump /home/abdellah/esp-idf/components/esptool_py /home/abdellah/esp-idf/components/fatfs /home/abdellah/esp-idf/components/freertos /home/abdellah/esp-idf/components/hal /home/abdellah/esp-idf/components/heap /home/abdellah/esp-idf/components/http_parser /home/abdellah/esp-idf/components/idf_test /home/abdellah/esp-idf/components/ieee802154 /home/abdellah/esp-idf/components/json /home/abdellah/esp-idf/components/log /home/abdellah/esp-idf/components/lwip /home/abdellah/esp-idf/ep_smart_house/main /home/abdellah/esp-idf/components/mbedtls /home/abdellah/esp-idf/components/mqtt /home/abdellah/esp-idf/components/newlib /home/abdellah/esp-idf/components/nvs_flash /home/abdellah/esp-idf/components/openthread /home/abdellah/esp-idf/components/partition_table /home/abdellah/esp-idf/components/perfmon /home/abdellah/esp-idf/components/protobuf-c /home/abdellah/esp-idf/components/protocomm /home/abdellah/esp-idf/components/pthread /home/abdellah/esp-idf/components/sdmmc /home/abdellah/esp-idf/components/soc /home/abdellah/esp-idf/components/spi_flash /home/abdellah/esp-idf/components/spiffs /home/abdellah/esp-idf/components/tcp_transport /home/abdellah/esp-idf/components/ulp /home/abdellah/esp-idf/components/unity /home/abdellah/esp-idf/components/usb /home/abdellah/esp-idf/components/vfs /home/abdellah/esp-idf/components/wear_levelling /home/abdellah/esp-idf/components/wifi_provisioning /home/abdellah/esp-idf/components/wpa_supplicant /home/abdellah/esp-idf/components/xtensa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/abdellah/esp-idf/ep_smart_house/build
+[1/85] Building C object esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj
+FAILED: esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj 
+/home/abdellah/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc -DESP_PLATFORM -DIDF_VER=\"v5.1-dev-2668-g4c98bee8a4-dirty\" -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/abdellah/esp-idf/ep_smart_house/build/config -I/home/abdellah/esp-idf/components/ep_analog_read -I/home/abdellah/esp-idf/components/newlib/platform_include -I/home/abdellah/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/abdellah/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/abdellah/esp-idf/components/freertos/esp_additions/include/freertos -I/home/abdellah/esp-idf/components/freertos/esp_additions/include -I/home/abdellah/esp-idf/components/esp_hw_support/include -I/home/abdellah/esp-idf/components/esp_hw_support/include/soc -I/home/abdellah/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/abdellah/esp-idf/components/esp_hw_support/port/esp32/. -I/home/abdellah/esp-idf/components/esp_hw_support/port/esp32/private_include -I/home/abdellah/esp-idf/components/heap/include -I/home/abdellah/esp-idf/components/log/include -I/home/abdellah/esp-idf/components/soc/include -I/home/abdellah/esp-idf/components/soc/esp32/. -I/home/abdellah/esp-idf/components/soc/esp32/include -I/home/abdellah/esp-idf/components/hal/esp32/include -I/home/abdellah/esp-idf/components/hal/include -I/home/abdellah/esp-idf/components/hal/platform_port/include -I/home/abdellah/esp-idf/components/esp_rom/include -I/home/abdellah/esp-idf/components/esp_rom/include/esp32 -I/home/abdellah/esp-idf/components/esp_rom/esp32 -I/home/abdellah/esp-idf/components/esp_common/include -I/home/abdellah/esp-idf/components/esp_system/include -I/home/abdellah/esp-idf/components/esp_system/port/soc -I/home/abdellah/esp-idf/components/esp_system/port/include/private -I/home/abdellah/esp-idf/components/xtensa/include -I/home/abdellah/esp-idf/components/xtensa/esp32/include -I/home/abdellah/esp-idf/components/lwip/include -I/home/abdellah/esp-idf/components/lwip/include/apps -I/home/abdellah/esp-idf/components/lwip/include/apps/sntp -I/home/abdellah/esp-idf/components/lwip/lwip/src/include -I/home/abdellah/esp-idf/components/lwip/port/esp32/include -I/home/abdellah/esp-idf/components/lwip/port/esp32/include/arch -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=/home/abdellah/esp-idf/ep_smart_house=. -fmacro-prefix-map=/home/abdellah/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -DconfigENABLE_FREERTOS_DEBUG_OCDAWARE=1 -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj -MF esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj.d -o esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj -c /home/abdellah/esp-idf/components/ep_analog_read/analog_read.c
+In file included from /home/abdellah/esp-idf/components/ep_analog_read/analog_read.c:3:
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.h:9:10: fatal error: driver/adc.h: No such file or directory
+    9 | #include "driver/adc.h"
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+[2/85] Linking C static library esp-idf/protocomm/libprotocomm.a
+[3/85] Building C object esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/src/core_dump_checksum.c.obj
+[4/85] Performing build step for 'bootloader'
+[1/1] cd /home/abdellah/esp-idf/ep_smart_house/build/bootloader/esp-idf/esptool_py && /home/abdellah/.espressif/python_env/idf5.1_py3.11_env/bin/python /home/abdellah/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/abdellah/esp-idf/ep_smart_house/build/bootloader/bootloader.bin
+Bootloader binary size 0x6720 bytes. 0x8e0 bytes (8%) free.
+[5/83] Building C object esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/src/core_dump_common.c.obj
+[6/83] Building C object esp-idf/espcoredump/CMakeFiles/__idf_espcoredump.dir/src/core_dump_elf.c.obj
+[7/83] Building C object esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/src/esp_local_ctrl_transport_httpd.c.obj
+[8/83] Building C object esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/src/esp_local_ctrl_handler.c.obj
+[9/83] Building C object esp-idf/ep_wifi/CMakeFiles/__idf_ep_wifi.dir/ep_wifi.c.obj
+FAILED: esp-idf/ep_wifi/CMakeFiles/__idf_ep_wifi.dir/ep_wifi.c.obj 
+/home/abdellah/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc -DESP_PLATFORM -DIDF_VER=\"v5.1-dev-2668-g4c98bee8a4-dirty\" -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/abdellah/esp-idf/ep_smart_house/build/config -I/home/abdellah/esp-idf/components/ep_wifi -I/home/abdellah/esp-idf/components/newlib/platform_include -I/home/abdellah/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/abdellah/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/abdellah/esp-idf/components/freertos/esp_additions/include/freertos -I/home/abdellah/esp-idf/components/freertos/esp_additions/include -I/home/abdellah/esp-idf/components/esp_hw_support/include -I/home/abdellah/esp-idf/components/esp_hw_support/include/soc -I/home/abdellah/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/abdellah/esp-idf/components/esp_hw_support/port/esp32/. -I/home/abdellah/esp-idf/components/esp_hw_support/port/esp32/private_include -I/home/abdellah/esp-idf/components/heap/include -I/home/abdellah/esp-idf/components/log/include -I/home/abdellah/esp-idf/components/soc/include -I/home/abdellah/esp-idf/components/soc/esp32/. -I/home/abdellah/esp-idf/components/soc/esp32/include -I/home/abdellah/esp-idf/components/hal/esp32/include -I/home/abdellah/esp-idf/components/hal/include -I/home/abdellah/esp-idf/components/hal/platform_port/include -I/home/abdellah/esp-idf/components/esp_rom/include -I/home/abdellah/esp-idf/components/esp_rom/include/esp32 -I/home/abdellah/esp-idf/components/esp_rom/esp32 -I/home/abdellah/esp-idf/components/esp_common/include -I/home/abdellah/esp-idf/components/esp_system/include -I/home/abdellah/esp-idf/components/esp_system/port/soc -I/home/abdellah/esp-idf/components/esp_system/port/include/private -I/home/abdellah/esp-idf/components/xtensa/include -I/home/abdellah/esp-idf/components/xtensa/esp32/include -I/home/abdellah/esp-idf/components/lwip/include -I/home/abdellah/esp-idf/components/lwip/include/apps -I/home/abdellah/esp-idf/components/lwip/include/apps/sntp -I/home/abdellah/esp-idf/components/lwip/lwip/src/include -I/home/abdellah/esp-idf/components/lwip/port/esp32/include -I/home/abdellah/esp-idf/components/lwip/port/esp32/include/arch -I/home/abdellah/esp-idf/components/esp_wifi/include -I/home/abdellah/esp-idf/components/esp_event/include -I/home/abdellah/esp-idf/components/esp_phy/include -I/home/abdellah/esp-idf/components/esp_phy/esp32/include -I/home/abdellah/esp-idf/components/esp_netif/include -I/home/abdellah/esp-idf/components/nvs_flash/include -I/home/abdellah/esp-idf/components/spi_flash/include -I/home/abdellah/esp-idf/components/esp_partition/include -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=/home/abdellah/esp-idf/ep_smart_house=. -fmacro-prefix-map=/home/abdellah/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -DconfigENABLE_FREERTOS_DEBUG_OCDAWARE=1 -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/ep_wifi/CMakeFiles/__idf_ep_wifi.dir/ep_wifi.c.obj -MF esp-idf/ep_wifi/CMakeFiles/__idf_ep_wifi.dir/ep_wifi.c.obj.d -o esp-idf/ep_wifi/CMakeFiles/__idf_ep_wifi.dir/ep_wifi.c.obj -c /home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c
+In file included from /home/abdellah/esp-idf/components/esp_wifi/include/esp_wifi.h:54,
+                 from /home/abdellah/esp-idf/components/ep_wifi/ep_wifi.h:1,
+                 from /home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:8:
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c: In function 'init_wifi_event_loop':
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:47:78: warning: passing argument 3 of 'esp_event_handler_register' from incompatible pointer type [-Wincompatible-pointer-types]
+   47 |     ESP_ERROR_CHECK(esp_event_handler_register(WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL));
+      |                                                                              ^~~~~~~~~~~~~~~~~~~
+      |                                                                              |
+      |                                                                              void (*)(void *, const char **, int32_t,  void *) {aka void (*)(void *, const char **, long int,  void *)}
+/home/abdellah/esp-idf/components/esp_common/include/esp_err.h:117:30: note: in definition of macro 'ESP_ERROR_CHECK'
+  117 |         esp_err_t err_rc_ = (x);                                        \
+      |                              ^
+In file included from /home/abdellah/esp-idf/components/esp_wifi/include/esp_wifi.h:56,
+                 from /home/abdellah/esp-idf/components/ep_wifi/ep_wifi.h:1,
+                 from /home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:8:
+/home/abdellah/esp-idf/components/esp_event/include/esp_event.h:138:58: note: expected 'esp_event_handler_t' {aka 'void (*)(void *, const char *, long int,  void *)'} but argument is of type 'void (*)(void *, const char **, int32_t,  void *)' {aka 'void (*)(void *, const char **, long int,  void *)'}
+  138 |                                      esp_event_handler_t event_handler,
+      |                                      ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c: In function 'init_wifi':
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:105:25: warning: initialization of 'unsigned char' from 'char *' makes integer from pointer without a cast [-Wint-conversion]
+  105 |                 .ssid = ap.ssid,
+      |                         ^~
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:105:25: note: (near initialization for 'cfg_sta.sta.ssid[0]')
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:106:29: warning: initialization of 'unsigned char' from 'char *' makes integer from pointer without a cast [-Wint-conversion]
+  106 |                 .password = ap.password,
+      |                             ^~
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:106:29: note: (near initialization for 'cfg_sta.sta.password[0]')
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:103:29: error: missing braces around initializer [-Werror=missing-braces]
+  103 |     wifi_config_t cfg_sta = {
+      |                             ^
+  104 |             .sta = {
+  105 |                 .ssid = ap.ssid,
+      |                         {      }
+  106 |                 .password = ap.password,
+      |                             {
+  107 |             },
+      |             }
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:103:29: error: missing braces around initializer [-Werror=missing-braces]
+  103 |     wifi_config_t cfg_sta = {
+      |                             ^
+  104 |             .sta = {
+  105 |                 .ssid = ap.ssid,
+      |                         {      }
+  106 |                 .password = ap.password,
+      |                             {
+  107 |             },
+      |             }
+In file included from /home/abdellah/esp-idf/components/esp_wifi/include/esp_wifi.h:54,
+                 from /home/abdellah/esp-idf/components/ep_wifi/ep_wifi.h:1,
+                 from /home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:8:
+/home/abdellah/esp-idf/components/esp_common/include/esp_err.h:116:31: warning: this statement may fall through [-Wimplicit-fallthrough=]
+  116 | #define ESP_ERROR_CHECK(x) do {                                         \
+      |                               ^
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:121:9: note: in expansion of macro 'ESP_ERROR_CHECK'
+  121 |         ESP_ERROR_CHECK(esp_wifi_connect());
+      |         ^~~~~~~~~~~~~~~
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:122:9: note: here
+  122 |         case 'a':
+      |         ^~~~
+At top level:
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.c:51:13: warning: 'print_auth_mode' defined but not used [-Wunused-function]
+   51 | static void print_auth_mode(int authmode)
+      |             ^~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+[10/83] Building C object esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/proto-c/esp_local_ctrl.pb-c.c.obj
+ninja: build stopped: subcommand failed.

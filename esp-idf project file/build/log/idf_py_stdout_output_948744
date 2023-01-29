@@ -1,0 +1,17 @@
+[0/1] Re-running CMake...
+-- Building ESP-IDF components for target esp32
+-- Project sdkconfig file /home/abdellah/esp-idf/ep_smart_house/sdkconfig
+-- App "ep_smart_house" version: 9d9e43b-dirty
+-- Adding linker script /home/abdellah/esp-idf/ep_smart_house/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_system/ld/esp32/sections.ld.in
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-data.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.syscalls.ld
+-- Adding linker script /home/abdellah/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld
+-- Adding linker script /home/abdellah/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld
+-- Configuring incomplete, errors occurred!
+See also "/home/abdellah/esp-idf/ep_smart_house/build/CMakeFiles/CMakeOutput.log".
+FAILED: build.ninja 
+/home/abdellah/.espressif/tools/cmake/3.24.0/bin/cmake --regenerate-during-build -S/home/abdellah/esp-idf/ep_smart_house -B/home/abdellah/esp-idf/ep_smart_house/build

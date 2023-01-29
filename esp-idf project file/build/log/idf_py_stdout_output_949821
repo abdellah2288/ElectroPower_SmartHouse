@@ -1,0 +1,6 @@
+[0/1] Re-running CMake...
+-- Building ESP-IDF components for target esp32
+-- Configuring incomplete, errors occurred!
+See also "/home/abdellah/esp-idf/ep_smart_house/build/CMakeFiles/CMakeOutput.log".
+FAILED: build.ninja 
+/home/abdellah/.espressif/tools/cmake/3.24.0/bin/cmake --regenerate-during-build -S/home/abdellah/esp-idf/ep_smart_house -B/home/abdellah/esp-idf/ep_smart_house/build

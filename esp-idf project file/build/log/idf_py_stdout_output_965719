@@ -1,0 +1,45 @@
+[1/12] Building C object esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj
+FAILED: esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj 
+/home/abdellah/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc -DESP_PLATFORM -DIDF_VER=\"v5.1-dev-2668-g4c98bee8a4-dirty\" -D_GNU_SOURCE -D_POSIX_READER_WRITER_LOCKS -I/home/abdellah/esp-idf/ep_smart_house/build/config -I/home/abdellah/esp-idf/components/ep_analog_read -I/home/abdellah/esp-idf/components/newlib/platform_include -I/home/abdellah/esp-idf/components/freertos/FreeRTOS-Kernel/include -I/home/abdellah/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/include -I/home/abdellah/esp-idf/components/freertos/esp_additions/include/freertos -I/home/abdellah/esp-idf/components/freertos/esp_additions/include -I/home/abdellah/esp-idf/components/esp_hw_support/include -I/home/abdellah/esp-idf/components/esp_hw_support/include/soc -I/home/abdellah/esp-idf/components/esp_hw_support/include/soc/esp32 -I/home/abdellah/esp-idf/components/esp_hw_support/port/esp32/. -I/home/abdellah/esp-idf/components/esp_hw_support/port/esp32/private_include -I/home/abdellah/esp-idf/components/heap/include -I/home/abdellah/esp-idf/components/log/include -I/home/abdellah/esp-idf/components/soc/include -I/home/abdellah/esp-idf/components/soc/esp32/. -I/home/abdellah/esp-idf/components/soc/esp32/include -I/home/abdellah/esp-idf/components/hal/esp32/include -I/home/abdellah/esp-idf/components/hal/include -I/home/abdellah/esp-idf/components/hal/platform_port/include -I/home/abdellah/esp-idf/components/esp_rom/include -I/home/abdellah/esp-idf/components/esp_rom/include/esp32 -I/home/abdellah/esp-idf/components/esp_rom/esp32 -I/home/abdellah/esp-idf/components/esp_common/include -I/home/abdellah/esp-idf/components/esp_system/include -I/home/abdellah/esp-idf/components/esp_system/port/soc -I/home/abdellah/esp-idf/components/esp_system/port/include/private -I/home/abdellah/esp-idf/components/xtensa/include -I/home/abdellah/esp-idf/components/xtensa/esp32/include -I/home/abdellah/esp-idf/components/lwip/include -I/home/abdellah/esp-idf/components/lwip/include/apps -I/home/abdellah/esp-idf/components/lwip/include/apps/sntp -I/home/abdellah/esp-idf/components/lwip/lwip/src/include -I/home/abdellah/esp-idf/components/lwip/port/esp32/include -I/home/abdellah/esp-idf/components/lwip/port/esp32/include/arch -I/home/abdellah/esp-idf/components/driver/include -I/home/abdellah/esp-idf/components/driver/deprecated -I/home/abdellah/esp-idf/components/driver/esp32/include -I/home/abdellah/esp-idf/components/esp_pm/include -I/home/abdellah/esp-idf/components/esp_ringbuf/include -I/home/abdellah/esp-idf/components/esp_adc/include -I/home/abdellah/esp-idf/components/esp_adc/interface -I/home/abdellah/esp-idf/components/esp_adc/esp32/include -I/home/abdellah/esp-idf/components/esp_adc/deprecated/include -mlongcalls -Wno-frame-address  -fdiagnostics-color=always -ffunction-sections -fdata-sections -Wall -Werror=all -Wno-error=unused-function -Wno-error=unused-variable -Wno-error=unused-but-set-variable -Wno-error=deprecated-declarations -Wextra -Wno-unused-parameter -Wno-sign-compare -Wno-enum-conversion -gdwarf-4 -ggdb -Og -fmacro-prefix-map=/home/abdellah/esp-idf/ep_smart_house=. -fmacro-prefix-map=/home/abdellah/esp-idf=/IDF -fstrict-volatile-bitfields -fno-jump-tables -fno-tree-switch-conversion -DconfigENABLE_FREERTOS_DEBUG_OCDAWARE=1 -std=gnu17 -Wno-old-style-declaration -MD -MT esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj -MF esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj.d -o esp-idf/ep_analog_read/CMakeFiles/__idf_ep_analog_read.dir/analog_read.c.obj -c /home/abdellah/esp-idf/components/ep_analog_read/analog_read.c
+In file included from /home/abdellah/esp-idf/components/ep_analog_read/analog_read.h:10,
+                 from /home/abdellah/esp-idf/components/ep_analog_read/analog_read.c:3:
+/home/abdellah/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.c:8:8: error: unknown type name 'esp_adc_cal_characteristics_t'
+    8 | static esp_adc_cal_characteristics_t adc1_chars;
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.c: In function 'configure':
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.c:20:39: error: 'ADC_ATTEN_DB_1' undeclared (first use in this function); did you mean 'ADC_ATTEN_DB_11'?
+   20 |     adc1_config_channel_atten(channel,ADC_ATTEN_DB_1);
+      |                                       ^~~~~~~~~~~~~~
+      |                                       ADC_ATTEN_DB_11
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.c:20:39: note: each undeclared identifier is reported only once for each function it appears in
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.c: In function 'read_analog_raw':
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.c:33:9: warning: unused variable 'val' [-Wunused-variable]
+   33 |     int val = adc1_get_raw(ADC1_CHANNEL_0);
+      |         ^~~
+At top level:
+/home/abdellah/esp-idf/components/ep_analog_read/analog_read.c:8:38: warning: 'adc1_chars' defined but not used [-Wunused-variable]
+    8 | static esp_adc_cal_characteristics_t adc1_chars;
+      |                                      ^~~~~~~~~~
+[2/12] Performing build step for 'bootloader'
+[1/1] cd /home/abdellah/esp-idf/ep_smart_house/build/bootloader/esp-idf/esptool_py && /home/abdellah/.espressif/python_env/idf5.1_py3.11_env/bin/python /home/abdellah/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/abdellah/esp-idf/ep_smart_house/build/bootloader/bootloader.bin
+Bootloader binary size 0x6720 bytes. 0x8e0 bytes (8%) free.
+[3/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/ep_smart_house.c.obj
+In file included from /home/abdellah/esp-idf/components/ep_analog_read/analog_read.h:10,
+                 from /home/abdellah/esp-idf/ep_smart_house/main/ep_smart_house.c:3:
+/home/abdellah/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+In file included from /home/abdellah/esp-idf/ep_smart_house/main/ep_smart_house.c:2:
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.h:52:13: warning: 'wifi_event_handler' declared 'static' but never defined [-Wunused-function]
+   52 | static void wifi_event_handler(void* arg, esp_event_base_t *event, int32_t event_id, void* event_data);
+      |             ^~~~~~~~~~~~~~~~~~
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.h:56:13: warning: 'initialize_nvs' declared 'static' but never defined [-Wunused-function]
+   56 | static void initialize_nvs(void);
+      |             ^~~~~~~~~~~~~~
+/home/abdellah/esp-idf/components/ep_wifi/ep_wifi.h:61:13: warning: 'print_auth_mode' declared 'static' but never defined [-Wunused-function]
+   61 | static void print_auth_mode(int authmode);
+      |             ^~~~~~~~~~~~~~~
+ninja: build stopped: subcommand failed.
