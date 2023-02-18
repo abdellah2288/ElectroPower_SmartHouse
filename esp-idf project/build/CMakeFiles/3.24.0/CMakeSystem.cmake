@@ -1,9 +1,9 @@
-set(CMAKE_HOST_SYSTEM "Linux-6.1.6-200.fc37.x86_64")
-set(CMAKE_HOST_SYSTEM_NAME "Linux")
-set(CMAKE_HOST_SYSTEM_VERSION "6.1.6-200.fc37.x86_64")
-set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
+set(CMAKE_HOST_SYSTEM "Windows-10.0.19045")
+set(CMAKE_HOST_SYSTEM_NAME "Windows")
+set(CMAKE_HOST_SYSTEM_VERSION "10.0.19045")
+set(CMAKE_HOST_SYSTEM_PROCESSOR "AMD64")
 
-include("/home/abdellah/esp-idf/tools/cmake/toolchain-esp32.cmake")
+include("C:/esp/esp-idf-v5.0/tools/cmake/toolchain-esp32.cmake")
 
 set(CMAKE_SYSTEM "Generic")
 set(CMAKE_SYSTEM_NAME "Generic")

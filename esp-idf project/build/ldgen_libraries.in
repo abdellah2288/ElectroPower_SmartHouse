@@ -34,12 +34,14 @@ $<TARGET_FILE:__idf_esp_wifi>
 $<TARGET_FILE:__idf_unity>
 $<TARGET_FILE:__idf_cmock>
 $<TARGET_FILE:__idf_console>
-$<TARGET_FILE:__idf_esp_adc>
 $<TARGET_FILE:__idf_ep_analog_read>
+$<TARGET_FILE:__idf_ep_i2c_lcd>
 $<TARGET_FILE:__idf_ep_wifi>
 $<TARGET_FILE:__idf_esp-idf-rc522>
 $<TARGET_FILE:__idf_http_parser>
 $<TARGET_FILE:__idf_esp-tls>
+$<TARGET_FILE:__idf_esp32-DHT11>
+$<TARGET_FILE:__idf_esp_adc>
 $<TARGET_FILE:__idf_esp_eth>
 $<TARGET_FILE:__idf_esp_gdbstub>
 $<TARGET_FILE:__idf_esp_hid>
@@ -57,6 +59,7 @@ $<TARGET_FILE:__idf_sdmmc>
 $<TARGET_FILE:__idf_fatfs>
 $<TARGET_FILE:__idf_json>
 $<TARGET_FILE:__idf_mqtt>
+$<TARGET_FILE:__idf_pca9685>
 $<TARGET_FILE:__idf_perfmon>
 $<TARGET_FILE:__idf_spiffs>
 $<TARGET_FILE:__idf_ulp>
