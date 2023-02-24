@@ -1,4 +1,4 @@
-/* * Data converted from C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/esp-idf/mbedtls/x509_crt_bundle
+/* * Data converted from C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/esp-idf/mbedtls/x509_crt_bundle
  */
 .data
 .section .rodata.embedded

@@ -5,18 +5,18 @@ cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
   "C:/esp/esp-idf-v5.0/components/bootloader/subproject"
-  "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader"
-  "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader-prefix"
-  "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader-prefix/tmp"
-  "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader-prefix/src/bootloader-stamp"
-  "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader-prefix/src"
-  "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader"
+  "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader-prefix"
+  "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader-prefix/tmp"
+  "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader-prefix/src/bootloader-stamp"
+  "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader-prefix/src"
+  "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader-prefix/src/bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader-prefix/src/bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/Abdellah/eclipse-workspace-1/smart_home/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Users/Abdellah/eclipse-workspace-1/smart_home_/build/bootloader-prefix/src/bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()
