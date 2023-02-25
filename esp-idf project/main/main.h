@@ -27,6 +27,9 @@ TaskHandle_t override_led_vals_task;
  * MQTT client handle
  */
 esp_mqtt_client_handle_t client;
+
+volatile esp_mqtt_event_t mqtt_event;
+
 /*
  * Queue in which sensor reading values from the pcf are shown
  */
@@ -41,7 +44,7 @@ regex_t reglr;
 char* welcome_messages[4] ={"-Not at home-","---Busy---","--Coming--","----Welcome----"};
 static rc522_handle_t scanner;
 /*
- * Semaphore to check for MQTT readiness, is set to 1 if the client manages to get a stable connection to the broker
+ * Conditional variable to check for MQTT readiness, is set to 1 if the client manages to get a stable connection to the broker
  */
 volatile int ready = 0;
 
@@ -61,9 +64,8 @@ void read_pcf8574(void* params);
 
 /**
  * @brief handles data recieved through MQTT
- * @param event_data MQTT event data
  */
-void mqtt_handle_data(esp_mqtt_event_t* event_data);
+void mqtt_handle_data(void* param);
 
 /**
  * @brief debugging function used to display pcf values in the serial console

@@ -13,7 +13,13 @@ void mqtt_event_handler(void* arg, esp_event_base_t base, int32_t event_id, void
 		ready = 0;
 		break;
 	case MQTT_EVENT_DATA:
-		mqtt_handle_data((esp_mqtt_event_t*) event_data);
+		// please note that each mqtt message has to be exactly 4 characters long
+		/*
+		 * due to constraints related to the android app (MQTT-dash) it has to be done this way
+		 * since it sends  non null terminated strings
+		 */
+		mqtt_event = *((esp_mqtt_event_t *) event_data);
+		xTaskGenericNotifyFromISR(mqtt_task,1,0,eNoAction,0,2);
 		break;
 	}
 }
@@ -26,7 +32,7 @@ static void rc522_handler(void* arg, esp_event_base_t base, int32_t event_id, vo
         case RC522_EVENT_TAG_SCANNED: {
                 rc522_tag_t* tag = (rc522_tag_t*) data->ptr;
                 //printf("> %" PRIx64 "\n",tag->serial_number);
-                xTaskGenericNotifyFromISR(open_door_task,0,((tag->serial_number == 1042346802697) | (tag->serial_number == 209704347857) << 1),eSetValueWithOverwrite ,0,3);
+                xTaskGenericNotifyFromISR(door_task,0,((tag->serial_number == 1042346802697) | (tag->serial_number == 209704347857) << 1),eSetValueWithOverwrite ,0,3);
             }
             break;
     }
@@ -111,12 +117,16 @@ void app_main(void)
     //xTaskCreatePinnedToCore(read_pcf8574,"read from pcf8574",4098,NULL,2,&reading_task,1);
 	xTaskCreatePinnedToCore(mqtt_comms,"MQTT communications",4098,(void*) &client,3,&mqtt_task,1);
 	xTaskCreatePinnedToCore(adjust_lights,"adjust lights",2048,&client,1,&lights_task,1);
+	xTaskCreatePinnedToCore(mqtt_handle_data,"MQTT data",1024,NULL,2,NULL,1);
 	//xTaskCreatePinnedToCore(print_pcf_vals,"print from pcf",2048,NULL,1,NULL,1);
 
 }
 
 void handle_doors(void* params)
 {
+	/*
+	 * It's okay to store the notification value in an 8 bit int (Check the values being sent)
+	 */
 	uint8_t notification_value = 0;
 
 	while(1)
@@ -291,28 +301,34 @@ void mqtt_comms(void* client)
 	}
 }
 
-void mqtt_handle_data(esp_mqtt_event_t* event_data)
+void mqtt_handle_data(void* params)
 {
-	char  msg_val[11];
-	switch(*(event_data->data + 1))
-	{
-	case 'l':
-		int room = *(event_data->data + 2) -'0';
-		int status = !(*(event_data->data) -'o');
-		override_byte = ((override_byte & (1 << room)) & (status << room)) ? override_byte : override_byte ^ (1<<room) ;
-		break;
-	case 'd':
-		if((*(event_data->data) -'o') ^ !(override_byte & 0x80)) override_byte ^= 0x80;
-		break;
-	case 'g':
-		if((*(event_data->data) -'o') ^ !(override_byte & 0x40)) override_byte ^= 0x40;
-		break;
-	default:
-		i2c_lcd_clear_screen(LCD_0_ADDRESS);
-		vTaskDelay(400/portTICK_PERIOD_MS);
-		i2c_lcd_write_message(welcome_messages[(*(event_data->data) -'0')],LCD_0_ADDRESS);
-		break;
-	}
+
+	while(1){
+
+			if (xTaskGenericNotifyWait(1,0,0xffffffffUL,NULL,1000/portTICK_PERIOD_MS)==pdPASS) {
+				switch(*(mqtt_event.data + 1))
+				{
+				case 'l':
+						int room = *(mqtt_event.data + 2) -'0';
+						int status = !(*(mqtt_event.data) -'o');
+						override_byte = ((override_byte & (1 << room)) & (status << room)) ? override_byte : override_byte ^ (1<<room) ;
+						break;
+				case 'd':
+					if((*(mqtt_event.data) -'o') ^ !(override_byte & 0x80)) override_byte ^= 0x80;
+					break;
+				case 'g':
+					if((*(mqtt_event.data) -'o') ^ !(override_byte & 0x40)) override_byte ^= 0x40;
+					break;
+				default:
+					i2c_lcd_clear_screen(LCD_0_ADDRESS);
+					vTaskDelay(400/portTICK_PERIOD_MS);
+					i2c_lcd_write_message(welcome_messages[(*(mqtt_event.data) -'0')],LCD_0_ADDRESS);
+					break;
+				}
+			}
+			vTaskDelay(200/portTICK_PERIOD_MS);
+		}
 }
 /*
  * Misc functions
