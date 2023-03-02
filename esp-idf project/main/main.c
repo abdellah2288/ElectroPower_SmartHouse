@@ -13,13 +13,8 @@ void mqtt_event_handler(void* arg, esp_event_base_t base, int32_t event_id, void
 		ready = 0;
 		break;
 	case MQTT_EVENT_DATA:
-		// please note that each mqtt message has to be exactly 4 characters long
-		/*
-		 * due to constraints related to the android app (MQTT-dash) it has to be done this way
-		 * since it sends  non null terminated strings
-		 */
 		mqtt_event = *((esp_mqtt_event_t *) event_data);
-		xTaskGenericNotifyFromISR(mqtt_task,1,0,eNoAction,0,2);
+		xTaskGenericNotifyFromISR(mqtt_task,0,0,eNoAction,0,2);
 		break;
 	}
 }
@@ -98,7 +93,7 @@ void app_main(void)
      * Configure mqtt client
      */
 	esp_mqtt_client_config_t mqtt_cfg = {
-		.broker.address.uri = "mqtt://172.16.6.182:1883"
+		.broker.address.uri = "mqtt://172.16.7.242:1883"
 	};
 	client = esp_mqtt_client_init(&mqtt_cfg);
 	esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, client);
@@ -115,9 +110,9 @@ void app_main(void)
 	 */
 	xTaskCreatePinnedToCore(handle_doors,"opens the door",2048,NULL,3,&door_task,1);
     //xTaskCreatePinnedToCore(read_pcf8574,"read from pcf8574",4098,NULL,2,&reading_task,1);
-	xTaskCreatePinnedToCore(mqtt_comms,"MQTT communications",4098,(void*) &client,3,&mqtt_task,1);
+	xTaskCreatePinnedToCore(mqtt_comms,"MQTT communications",4098,(void*) &client,3,NULL,1);
 	xTaskCreatePinnedToCore(adjust_lights,"adjust lights",2048,&client,1,&lights_task,1);
-	xTaskCreatePinnedToCore(mqtt_handle_data,"MQTT data",1024,NULL,2,NULL,1);
+	xTaskCreatePinnedToCore(mqtt_handle_data,"MQTT data",2048,NULL,2,&mqtt_task,1);
 	//xTaskCreatePinnedToCore(print_pcf_vals,"print from pcf",2048,NULL,1,NULL,1);
 
 }
@@ -207,20 +202,16 @@ void adjust_lights(void* client)
 	{
 		float reading = (read_analog_raw(adc1_channels[i]) *100) / 3800;
 		int mqtt_status= ((override_byte) & (0x01 << i));
-		char topic[14];
-		char led_mqtt_status[4];
-		sprintf(topic, "room%d/lights",i);
+
 		if((reading > 50)  || mqtt_status)
 		{
 			setPWM(pca_pins[i],( (i==0 || mqtt_status) ? 550: 0),0);
-			sprintf(led_mqtt_status,"ol%d",i);
-			if(ready)esp_mqtt_client_publish(cli,topic,led_mqtt_status,4,0,0);
 		}
 		else
 		{
-			sprintf(led_mqtt_status,"fl%d",i);
+
 			setPWM(pca_pins[i],((i==0 || mqtt_status) ? 0: 550),0);
-			if(ready) esp_mqtt_client_publish(cli,topic,led_mqtt_status,4,0,0);
+
 		}
 	}
 	vTaskDelay(2000/portTICK_PERIOD_MS);
@@ -306,8 +297,9 @@ void mqtt_handle_data(void* params)
 
 	while(1){
 
-			if (xTaskGenericNotifyWait(1,0,0xffffffffUL,NULL,1000/portTICK_PERIOD_MS)==pdPASS) {
-				switch(*(mqtt_event.data + 1))
+			if (xTaskGenericNotifyWait(0,0,0xffffffffUL,NULL,1000/portTICK_PERIOD_MS)==pdPASS) {
+
+				switch(*((mqtt_event.data) + 1))
 				{
 				case 'l':
 						int room = *(mqtt_event.data + 2) -'0';
@@ -316,6 +308,7 @@ void mqtt_handle_data(void* params)
 						break;
 				case 'd':
 					if((*(mqtt_event.data) -'o') ^ !(override_byte & 0x80)) override_byte ^= 0x80;
+
 					break;
 				case 'g':
 					if((*(mqtt_event.data) -'o') ^ !(override_byte & 0x40)) override_byte ^= 0x40;
@@ -327,6 +320,7 @@ void mqtt_handle_data(void* params)
 					break;
 				}
 			}
+
 			vTaskDelay(200/portTICK_PERIOD_MS);
 		}
 }
