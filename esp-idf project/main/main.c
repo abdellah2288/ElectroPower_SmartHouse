@@ -1,4 +1,7 @@
 #include "main.h"
+#ifndef _KP
+#include "ep_keypad.h"
+#endif
 
 
 
@@ -100,6 +103,7 @@ void app_main(void)
 	esp_mqtt_client_start(client);
 
 
+
 	/*
 	 * Create queues
 	 */
@@ -113,10 +117,54 @@ void app_main(void)
 	xTaskCreatePinnedToCore(mqtt_comms,"MQTT communications",4098,(void*) &client,3,NULL,1);
 	xTaskCreatePinnedToCore(adjust_lights,"adjust lights",2048,&client,1,&lights_task,1);
 	xTaskCreatePinnedToCore(mqtt_handle_data,"MQTT data",2048,NULL,2,&mqtt_task,1);
+	xTaskCreatePinnedToCore(keypad_handler,"keypad handler",4098,NULL,2,NULL,0);
 	//xTaskCreatePinnedToCore(print_pcf_vals,"print from pcf",2048,NULL,1,NULL,1);
 
 }
 
+void keypad_handler(void* params)
+{
+	char c = '\0';
+	uint8_t clear_pullup = 0xff;
+	double prev_time=0;
+	double curr_time=0;
+	i2c_master_write_to_device(I2C_NUM_0,KEYPAD_ADDRESS, &clear_pullup,1,100);
+	init_timer(&buffer);
+
+	while(1)
+    {
+
+		timer_get_counter_time_sec(TIMER_GROUP_0,TIMER_0,&curr_time);
+
+		c = poll_keypad(KEYPAD_ADDRESS);
+
+		if((prev_time - curr_time)  > 10) clear_buffer(&buffer);
+
+
+		switch(c)
+		{
+			case '*':
+				buffer.occupied -= 1;
+				(buffer.elements)[buffer.occupied] = '\0';
+				prev_time = curr_time;
+				break;
+			case '#':
+				xTaskGenericNotify(door_task,0,!(strcmp(buffer.elements,FRONT_DOOR_PASSWD)),eSetValueWithOverwrite,0);
+				clear_buffer(&buffer);
+				prev_time = curr_time;
+				break;
+			case '\0':
+				break;
+			default:
+				prev_time = curr_time;
+				add_to_buffer(&buffer,c);
+				break;
+
+		}
+
+    	vTaskDelay(50/portTICK_PERIOD_MS);
+    }
+}
 void handle_doors(void* params)
 {
 	/*
@@ -156,7 +204,7 @@ void handle_doors(void* params)
 			setPWM(2,0,500);
 			setPWM(8,0,0);
 			i2c_lcd_clear_screen(LCD_0_ADDRESS);
-
+			wlc_msg_displayed = false;
 			break;
 		default:
 			i2c_lcd_clear_screen(LCD_0_ADDRESS);
@@ -168,6 +216,7 @@ void handle_doors(void* params)
 			setPWM(11,0,0);
 			setPWM(10,0,0);
 			i2c_lcd_clear_screen(LCD_0_ADDRESS);
+			wlc_msg_displayed = false;
 			break;
 		}
 
@@ -200,18 +249,22 @@ void adjust_lights(void* client)
 	{
 	for(int i=0; i<4;i++)
 	{
-		float reading = (read_analog_raw(adc1_channels[i]) *100) / 3800;
+		float reading = (i==0)? 100 - (read_analog_raw(adc1_channels[i]) *100) / 3800 : (read_analog_raw(adc1_channels[i]) *100) / 3800;
 		int mqtt_status= ((override_byte) & (0x01 << i));
+		int curr_status = (led_stats & (1<<i));
 
-		if((reading > 50)  || mqtt_status)
+		if( ( (reading < 50)  || mqtt_status )   )
 		{
-			setPWM(pca_pins[i],( (i==0 || mqtt_status) ? 550: 0),0);
+			if(!curr_status)
+			{
+			setPWM(pca_pins[i], 550,0);
+			led_stats = led_stats | (1<<i);
+			}
 		}
 		else
 		{
-
-			setPWM(pca_pins[i],((i==0 || mqtt_status) ? 0: 550),0);
-
+			setPWM(pca_pins[i], 0,0);
+			led_stats = led_stats & ((1<<i)^0xff);
 		}
 	}
 	vTaskDelay(2000/portTICK_PERIOD_MS);
@@ -314,13 +367,31 @@ void mqtt_handle_data(void* params)
 					if((*(mqtt_event.data) -'o') ^ !(override_byte & 0x40)) override_byte ^= 0x40;
 					break;
 				default:
+					if(strcmp(welcome_messages[(*(mqtt_event.data) -'0')],prev_wlc_msg))
+					{
+					strcpy(prev_wlc_msg,welcome_messages[(*(mqtt_event.data) -'0')]);
 					i2c_lcd_clear_screen(LCD_0_ADDRESS);
 					vTaskDelay(400/portTICK_PERIOD_MS);
 					i2c_lcd_write_message(welcome_messages[(*(mqtt_event.data) -'0')],LCD_0_ADDRESS);
+					wlc_msg_displayed = true;
+					}
 					break;
 				}
 			}
-
+			if(buffer.occupied != 0 && strcmp(prev_msg,buffer.elements))
+			{
+				strcpy(prev_msg,buffer.elements);
+				i2c_lcd_clear_screen(LCD_0_ADDRESS);
+				vTaskDelay(200/portTICK_PERIOD_MS);
+				i2c_lcd_write_message(buffer.elements,LCD_0_ADDRESS);
+			}
+			else if( !wlc_msg_displayed && buffer.occupied == 0)
+			{
+				i2c_lcd_clear_screen(LCD_0_ADDRESS);
+				vTaskDelay(200/portTICK_PERIOD_MS);
+				i2c_lcd_write_message(prev_wlc_msg,LCD_0_ADDRESS);
+				wlc_msg_displayed = true;
+			}
 			vTaskDelay(200/portTICK_PERIOD_MS);
 		}
 }

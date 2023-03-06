@@ -10,11 +10,17 @@
 #include <pca9685.h>
 #include <analog_read.h>
 #include "DHT.h"
+#ifndef _KP
+#include "ep_keypad.h"
+#endif
 
+#define FRONT_DOOR_PASSWD "56709"
 #define LCD_1_ADDRESS 0x23
 #define LCD_0_ADDRESS 0x27
 #define SENSOR_PCF_ADDRESS 0x21
+#define KEYPAD_ADDRESS 0x20
 
+keypad_buffer_t	buffer;
 /*
  * Task handles
  */
@@ -42,12 +48,16 @@ regex_t reglr;
  * Custom welcome messages
  */
 char* welcome_messages[4] ={"-Not at home-","---Busy---","--Coming--","----Welcome----"};
+char prev_msg[25]="";
+char prev_wlc_msg[25]="----Welcome----";
 static rc522_handle_t scanner;
 /*
  * Conditional variable to check for MQTT readiness, is set to 1 if the client manages to get a stable connection to the broker
  */
 volatile int ready = 0;
+volatile bool wlc_msg_displayed = false;
 
+volatile uint8_t led_stats = 0x00;
 /*
  * Override byte: overrides normal functioning parameters in favor of instructions recieved via mqtt
  * lower 4 bits are reserved for LED values
@@ -98,4 +108,6 @@ int match_to_regex(char * string,char* expression);
  *@param client a pointer to the mqtt client instance
  */
 void mqtt_comms(void* client);
+
+void keypad_handler(void* params);
 
