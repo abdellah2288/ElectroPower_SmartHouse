@@ -1,7 +1,5 @@
 #include "main.h"
-#ifndef _KP
 #include "ep_keypad.h"
-#endif
 
 
 
@@ -88,15 +86,15 @@ void app_main(void)
      */
     set_pca9685_adress(0x40);
     resetPCA9685();
-    setFrequencyPCA9685(50);
+    setFrequencyPCA9685(60);
     turnAllOff();
 
-
+  
     /*
      * Configure mqtt client
      */
 	esp_mqtt_client_config_t mqtt_cfg = {
-		.broker.address.uri = "mqtt://172.16.7.242:1883"
+		.broker.address.uri = "mqtt://172.16.7.188:1883"
 	};
 	client = esp_mqtt_client_init(&mqtt_cfg);
 	esp_mqtt_client_register_event(client, ESP_EVENT_ANY_ID, mqtt_event_handler, client);
@@ -108,7 +106,7 @@ void app_main(void)
 	 * Create queues
 	 */
 	sensor_readings_q = xQueueCreate(5,1);
-	/*
+/*
 	 * Create tasks
 	 * avoid using core 0 as it causes instability, core 1 already has many cycles to spare
 	 */
@@ -128,6 +126,7 @@ void keypad_handler(void* params)
 	uint8_t clear_pullup = 0xff;
 	double prev_time=0;
 	double curr_time=0;
+
 	i2c_master_write_to_device(I2C_NUM_0,KEYPAD_ADDRESS, &clear_pullup,1,100);
 	init_timer(&buffer);
 
@@ -144,11 +143,13 @@ void keypad_handler(void* params)
 		switch(c)
 		{
 			case '*':
+				/*	Delete last inserted character	*/
 				buffer.occupied -= 1;
 				(buffer.elements)[buffer.occupied] = '\0';
 				prev_time = curr_time;
 				break;
 			case '#':
+				/*	submit buffer	*/
 				xTaskGenericNotify(door_task,0,!(strcmp(buffer.elements,FRONT_DOOR_PASSWD)),eSetValueWithOverwrite,0);
 				clear_buffer(&buffer);
 				prev_time = curr_time;
@@ -174,49 +175,79 @@ void handle_doors(void* params)
 
 	while(1)
 	{
-	if(override_byte & 0x80) setPWM(3,0,550);
-	else setPWM(3,0,150);
-	if(override_byte & 0x40) setPWM(2,0,180);
-	else setPWM(2,0,500);
+	/*Check if an MQTT open door request was sent, if not default to a closed door (duh)*/
+	if(override_byte & 0x80) setPWM(DOOR_SERVO,0,500);
+	else setPWM(DOOR_SERVO,0,50);
+	
+	if(override_byte & 0x40) setPWM(GARAGE_SERVO,0,50);
+	else setPWM(GARAGE_SERVO,0,500);
+	
 	if(xTaskGenericNotifyWait(0,0,0xffffffffUL,&notification_value,1000/portTICK_PERIOD_MS)==pdPASS)
 	{
 		switch(notification_value)
 		{
-		case 1:
-			i2c_lcd_clear_screen(LCD_0_ADDRESS);
-			vTaskDelay(400/portTICK_PERIOD_MS);
-			i2c_lcd_write_message("Access Granted!",LCD_0_ADDRESS);
-			setPWM(8,0,550);
-			setPWM(3,0,550);
-			vTaskDelay(3000/portTICK_PERIOD_MS);
-			setPWM(3,0,150);
-			setPWM(8,0,0);
-			i2c_lcd_clear_screen(LCD_0_ADDRESS);
-
-			break;
 		case 2:
 			i2c_lcd_clear_screen(LCD_0_ADDRESS);
 			vTaskDelay(400/portTICK_PERIOD_MS);
+			
 			i2c_lcd_write_message("Access Granted!",LCD_0_ADDRESS);
-			setPWM(8,0,550);
-			setPWM(2,0,180);
+			
+			setPWM(GARAGE_LED_GREEN,0,550);
+			setPWM(GARAGE_SERVO,0,50);
+			
 			vTaskDelay(3000/portTICK_PERIOD_MS);
-			setPWM(2,0,500);
-			setPWM(8,0,0);
+			
+			setPWM(GARAGE_SERVO,0,500);
+			setPWM(GARAGE_LED_GREEN,0,0);
+			
 			i2c_lcd_clear_screen(LCD_0_ADDRESS);
+
+			break;
+		case 1:
+			
+			i2c_lcd_clear_screen(LCD_0_ADDRESS);
+			vTaskDelay(400/portTICK_PERIOD_MS);
+			i2c_lcd_write_message("Access Granted!",LCD_0_ADDRESS);
+			
+			setPWM(DOOR_LED_GREEN,0,550);
+			
+			setPWM(DOOR_SERVO,0,500);
+			
+			vTaskDelay(3000/portTICK_PERIOD_MS);
+			
+			setPWM(DOOR_SERVO,0,50);
+			
+			setPWM(DOOR_LED_GREEN,0,0);
+			
+			i2c_lcd_clear_screen(LCD_0_ADDRESS);
+			
 			wlc_msg_displayed = false;
+			
 			break;
 		default:
 			i2c_lcd_clear_screen(LCD_0_ADDRESS);
+			/*Wait for clear command to settle*/
 			vTaskDelay(400/portTICK_PERIOD_MS);
 			i2c_lcd_write_message("Access Denied",LCD_0_ADDRESS);
-			setPWM(11,0,550);
-			setPWM(10,0,900);
+
+			setPWM(GARAGE_LED_RED,0,550);
+			setPWM(DOOR_LED_RED,0,550);
+
+			setPWM(GARAGE_BUZZER,0,900);
+			setPWM(DOOR_BUZZER,0,900);
+
 			vTaskDelay(1000/portTICK_PERIOD_MS);
-			setPWM(11,0,0);
-			setPWM(10,0,0);
+
+			setPWM(GARAGE_LED_RED,0,0);
+			setPWM(DOOR_LED_RED,0,0);
+			
+			setPWM(GARAGE_BUZZER,0,0);
+			setPWM(DOOR_BUZZER,0,0);
+			
 			i2c_lcd_clear_screen(LCD_0_ADDRESS);
+			
 			wlc_msg_displayed = false;
+			
 			break;
 		}
 
@@ -242,7 +273,7 @@ void read_pcf8574(void* params)
 void adjust_lights(void* client)
 {
 
-	int pca_pins[] = {12,6,5,4};
+	int pca_pins[] = {EXTERNAL_LEDS,ROOM1_LEDS,ROOM2_LEDS,ROOM3_LEDS};
 	int adc1_channels[] = {5,4,6,7};
 	esp_mqtt_client_handle_t cli =*((esp_mqtt_client_handle_t *) client) ;
 	while(1)
@@ -265,6 +296,7 @@ void adjust_lights(void* client)
 		{
 			setPWM(pca_pins[i], 0,0);
 			led_stats = led_stats & ((1<<i)^0xff);
+
 		}
 	}
 	vTaskDelay(2000/portTICK_PERIOD_MS);
@@ -284,10 +316,8 @@ void print_pcf_vals(void* params)
 
 		for(int i=0;i<8;i++)
 			{
-			//printf("> PIN [%d] OFF\n",i);
 			if( !((data>>i) & pin_select)  )
 				{
-				printf("> PIN [%d] ON\n",i);
 				vTaskDelay(500/portTICK_PERIOD_MS);
 				}
 			vTaskDelay(500/portTICK_PERIOD_MS);

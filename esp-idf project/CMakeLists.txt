@@ -1,6 +1,10 @@
-# The following lines of boilerplate have to be in your project's
-# CMakeLists in this exact order for cmake to work correctly
-cmake_minimum_required(VERSION 3.5)
+# See the build system documentation in IDF programming guide
+# for more information about component CMakeLists.txt files.
 
-include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(app-template)
+idf_component_register(
+    SRCS main.c DHT_c.c ep_keypad.c       # list the source files of this component
+    INCLUDE_DIRS        # optional, add here public include directories
+    PRIV_INCLUDE_DIRS   # optional, add here private include directories
+    REQUIRES            # optional, list the public requirements (component names)
+    PRIV_REQUIRES       # optional, list the private requirements
+)

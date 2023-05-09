@@ -10,15 +10,37 @@
 #include <pca9685.h>
 #include <analog_read.h>
 #include "DHT.h"
-#ifndef _KP
 #include "ep_keypad.h"
-#endif
 
 #define FRONT_DOOR_PASSWD "56709"
 #define LCD_1_ADDRESS 0x23
 #define LCD_0_ADDRESS 0x27
 #define SENSOR_PCF_ADDRESS 0x21
 #define KEYPAD_ADDRESS 0x20
+
+/*PCA pins*/
+typedef enum {
+	EXTERNAL_LEDS,
+	GARAGE_LED,
+	ROOM1_LEDS,
+	ROOM3_LEDS,
+	ROOM2_LEDS,
+	ROOM1_LED_EXTRA,
+	DC_MOTOR_ROOM_2,
+	GARAGE_SERVO,
+	GARAGE_LED_RED,
+	GARAGE_BUZZER,
+	GARAGE_LED_GREEN,
+	DOOR_LED_GREEN,
+	DOOR_LED_RED,
+	DOOR_BUZZER,
+	DOOR_SERVO
+} pcapins_e;
+
+
+
+
+
 
 keypad_buffer_t	buffer;
 /*
@@ -91,14 +113,6 @@ void handle_doors(void* params);
  * @brief adjusts lights according to mqtt instructions and ldr values
  */
 void adjust_lights(void* client);
-
-/**
- * @brief matches string to regular expression
- * @param string string to be matched to
- * @param expression regex expression
- * @return returns match result, 0 if no match was found
- */
-int match_to_regex(char * string,char* expression);
 
 
 /**
