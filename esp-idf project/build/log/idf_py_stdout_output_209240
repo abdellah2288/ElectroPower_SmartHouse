@@ -1,0 +1,43 @@
+-- Found Git: /usr/bin/git (found version "2.37.3") 
+-- The C compiler identification is GNU 11.2.0
+-- The CXX compiler identification is GNU 11.2.0
+-- The ASM compiler identification is GNU
+-- Found assembler: /home/abdellah/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /home/abdellah/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /home/abdellah/.espressif/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/xtensa-esp32-elf-g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Building ESP-IDF components for target esp32
+-- Project sdkconfig file /home/abdellah/esp/esp-idf/sm_home/sdkconfig
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Check size of time_t
+-- Check size of time_t - done
+-- Found Python3: /home/abdellah/.espressif/python_env/idf5.0_py3.11_env/bin/python (found version "3.11.0") found components: Interpreter 
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS
+-- Performing Test C_COMPILER_SUPPORTS_WFORMAT_SIGNEDNESS - Success
+-- App "sm_home" version: v5.0.1-dirty
+-- Adding linker script /home/abdellah/esp/esp-idf/sm_home/build/esp-idf/esp_system/ld/memory.ld
+-- Adding linker script /home/abdellah/esp/esp-idf/components/esp_system/ld/esp32/sections.ld.in
+-- Adding linker script /home/abdellah/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.ld
+-- Adding linker script /home/abdellah/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.api.ld
+-- Adding linker script /home/abdellah/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.libgcc.ld
+-- Adding linker script /home/abdellah/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-data.ld
+-- Adding linker script /home/abdellah/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.syscalls.ld
+-- Adding linker script /home/abdellah/esp/esp-idf/components/esp_rom/esp32/ld/esp32.rom.newlib-funcs.ld
+-- Adding linker script /home/abdellah/esp/esp-idf/components/soc/esp32/ld/esp32.peripherals.ld
+-- Components: DHT app_trace app_update bootloader bootloader_support bt cmock console cxx driver efuse ep_analog_read ep_i2c_lcd ep_wifi esp-idf-rc522 esp-tls esp_adc esp_app_format esp_common esp_eth esp_event esp_gdbstub esp_hid esp_http_client esp_http_server esp_https_ota esp_https_server esp_hw_support esp_lcd esp_local_ctrl esp_netif esp_partition esp_phy esp_pm esp_psram esp_ringbuf esp_rom esp_system esp_timer esp_wifi espcoredump esptool_py fatfs freertos hal heap http_parser idf_test ieee802154 json log lwip main mbedtls mqtt newlib nvs_flash openthread partition_table pca9685 perfmon protobuf-c protocomm pthread sdmmc soc spi_flash spiffs tcp_transport ulp unity usb vfs wear_levelling wifi_provisioning wpa_supplicant xtensa
+-- Component paths: /home/abdellah/esp/esp-idf/components/DHT /home/abdellah/esp/esp-idf/components/app_trace /home/abdellah/esp/esp-idf/components/app_update /home/abdellah/esp/esp-idf/components/bootloader /home/abdellah/esp/esp-idf/components/bootloader_support /home/abdellah/esp/esp-idf/components/bt /home/abdellah/esp/esp-idf/components/cmock /home/abdellah/esp/esp-idf/components/console /home/abdellah/esp/esp-idf/components/cxx /home/abdellah/esp/esp-idf/components/driver /home/abdellah/esp/esp-idf/components/efuse /home/abdellah/esp/esp-idf/components/ep_analog_read /home/abdellah/esp/esp-idf/components/ep_i2c_lcd /home/abdellah/esp/esp-idf/components/ep_wifi /home/abdellah/esp/esp-idf/components/esp-idf-rc522 /home/abdellah/esp/esp-idf/components/esp-tls /home/abdellah/esp/esp-idf/components/esp_adc /home/abdellah/esp/esp-idf/components/esp_app_format /home/abdellah/esp/esp-idf/components/esp_common /home/abdellah/esp/esp-idf/components/esp_eth /home/abdellah/esp/esp-idf/components/esp_event /home/abdellah/esp/esp-idf/components/esp_gdbstub /home/abdellah/esp/esp-idf/components/esp_hid /home/abdellah/esp/esp-idf/components/esp_http_client /home/abdellah/esp/esp-idf/components/esp_http_server /home/abdellah/esp/esp-idf/components/esp_https_ota /home/abdellah/esp/esp-idf/components/esp_https_server /home/abdellah/esp/esp-idf/components/esp_hw_support /home/abdellah/esp/esp-idf/components/esp_lcd /home/abdellah/esp/esp-idf/components/esp_local_ctrl /home/abdellah/esp/esp-idf/components/esp_netif /home/abdellah/esp/esp-idf/components/esp_partition /home/abdellah/esp/esp-idf/components/esp_phy /home/abdellah/esp/esp-idf/components/esp_pm /home/abdellah/esp/esp-idf/components/esp_psram /home/abdellah/esp/esp-idf/components/esp_ringbuf /home/abdellah/esp/esp-idf/components/esp_rom /home/abdellah/esp/esp-idf/components/esp_system /home/abdellah/esp/esp-idf/components/esp_timer /home/abdellah/esp/esp-idf/components/esp_wifi /home/abdellah/esp/esp-idf/components/espcoredump /home/abdellah/esp/esp-idf/components/esptool_py /home/abdellah/esp/esp-idf/components/fatfs /home/abdellah/esp/esp-idf/components/freertos /home/abdellah/esp/esp-idf/components/hal /home/abdellah/esp/esp-idf/components/heap /home/abdellah/esp/esp-idf/components/http_parser /home/abdellah/esp/esp-idf/components/idf_test /home/abdellah/esp/esp-idf/components/ieee802154 /home/abdellah/esp/esp-idf/components/json /home/abdellah/esp/esp-idf/components/log /home/abdellah/esp/esp-idf/components/lwip /home/abdellah/esp/esp-idf/sm_home/main /home/abdellah/esp/esp-idf/components/mbedtls /home/abdellah/esp/esp-idf/components/mqtt /home/abdellah/esp/esp-idf/components/newlib /home/abdellah/esp/esp-idf/components/nvs_flash /home/abdellah/esp/esp-idf/components/openthread /home/abdellah/esp/esp-idf/components/partition_table /home/abdellah/esp/esp-idf/components/pca9685 /home/abdellah/esp/esp-idf/components/perfmon /home/abdellah/esp/esp-idf/components/protobuf-c /home/abdellah/esp/esp-idf/components/protocomm /home/abdellah/esp/esp-idf/components/pthread /home/abdellah/esp/esp-idf/components/sdmmc /home/abdellah/esp/esp-idf/components/soc /home/abdellah/esp/esp-idf/components/spi_flash /home/abdellah/esp/esp-idf/components/spiffs /home/abdellah/esp/esp-idf/components/tcp_transport /home/abdellah/esp/esp-idf/components/ulp /home/abdellah/esp/esp-idf/components/unity /home/abdellah/esp/esp-idf/components/usb /home/abdellah/esp/esp-idf/components/vfs /home/abdellah/esp/esp-idf/components/wear_levelling /home/abdellah/esp/esp-idf/components/wifi_provisioning /home/abdellah/esp/esp-idf/components/wpa_supplicant /home/abdellah/esp/esp-idf/components/xtensa
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/abdellah/esp/esp-idf/sm_home/build

@@ -1,6 +1,4 @@
-/**
- *
- */
+#ifndef _KP
 #include <stdio.h>
 #include <driver/gpio.h>
 #include <driver/i2c.h>
@@ -30,3 +28,4 @@ void init_timer(keypad_buffer_t* buffer);
 void clear_buffer(keypad_buffer_t *buffer);
 
 void add_to_buffer(keypad_buffer_t* buffer,char val);
+#endif

@@ -38,7 +38,7 @@
  *
  * BSD Licensed as described in the file LICENSE
  */
-#include "dht.h"
+#include "DHT.h"
 
 #include <freertos/FreeRTOS.h>
 #include <string.h>

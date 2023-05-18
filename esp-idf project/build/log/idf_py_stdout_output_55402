@@ -1,0 +1,158 @@
+[1/10] Performing build step for 'bootloader'
+[1/1] cd /home/abdellah/esp/esp-idf/sm_home/build/bootloader/esp-idf/esptool_py && /home/abdellah/.espressif/python_env/idf5.0_py3.11_env/bin/python /home/abdellah/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/abdellah/esp/esp-idf/sm_home/build/bootloader/bootloader.bin
+Bootloader binary size 0x6710 bytes. 0x8f0 bytes (8%) free.
+[2/8] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/main.c.obj
+In file included from /home/abdellah/esp/esp-idf/components/ep_analog_read/analog_read.h:10,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.h:11,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.c:1:
+/home/abdellah/esp/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+In file included from /home/abdellah/esp/esp-idf/sm_home/main/ep_keypad.h:8,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.h:14,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.c:1:
+/home/abdellah/esp/esp-idf/components/driver/deprecated/driver/timer.h:16:2: warning: #warning "legacy timer group driver is deprecated, please migrate to driver/gptimer.h" [-Wcpp]
+   16 | #warning "legacy timer group driver is deprecated, please migrate to driver/gptimer.h"
+      |  ^~~~~~~
+/home/abdellah/esp/esp-idf/sm_home/main/main.c: In function 'mqtt_event_handler':
+/home/abdellah/esp/esp-idf/sm_home/main/main.c:20:69: warning: passing argument 6 of 'xTaskGenericNotifyFromISR' makes pointer from integer without a cast [-Wint-conversion]
+   20 |                 xTaskGenericNotifyFromISR(mqtt_task,0,0,eNoAction,0,2);
+      |                                                                     ^
+      |                                                                     |
+      |                                                                     int
+In file included from /home/abdellah/esp/esp-idf/components/esp_event/include/esp_event.h:13,
+                 from /home/abdellah/esp/esp-idf/components/esp_wifi/include/esp_wifi.h:56,
+                 from /home/abdellah/esp/esp-idf/components/ep_wifi/ep_wifi.h:1,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.h:5,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.c:1:
+/home/abdellah/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2553:52: note: expected 'BaseType_t *' {aka 'int *'} but argument is of type 'int'
+ 2553 |                                       BaseType_t * pxHigherPriorityTaskWoken ) PRIVILEGED_FUNCTION;
+      |                                       ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/abdellah/esp/esp-idf/sm_home/main/main.c: In function 'rc522_handler':
+/home/abdellah/esp/esp-idf/sm_home/main/main.c:33:165: warning: passing argument 6 of 'xTaskGenericNotifyFromISR' makes pointer from integer without a cast [-Wint-conversion]
+   33 |                 xTaskGenericNotifyFromISR(door_task,0,((tag->serial_number == 1042346802697) | (tag->serial_number == 209704347857) << 1),eSetValueWithOverwrite ,0,3);
+      |                                                                                                                                                                     ^
+      |                                                                                                                                                                     |
+      |                                                                                                                                                                     int
+In file included from /home/abdellah/esp/esp-idf/components/esp_event/include/esp_event.h:13,
+                 from /home/abdellah/esp/esp-idf/components/esp_wifi/include/esp_wifi.h:56,
+                 from /home/abdellah/esp/esp-idf/components/ep_wifi/ep_wifi.h:1,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.h:5,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.c:1:
+/home/abdellah/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2553:52: note: expected 'BaseType_t *' {aka 'int *'} but argument is of type 'int'
+ 2553 |                                       BaseType_t * pxHigherPriorityTaskWoken ) PRIVILEGED_FUNCTION;
+      |                                       ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/abdellah/esp/esp-idf/sm_home/main/main.c: In function 'handle_doors':
+/home/abdellah/esp/esp-idf/sm_home/main/main.c:181:52: warning: passing argument 4 of 'xTaskGenericNotifyWait' from incompatible pointer type [-Wincompatible-pointer-types]
+  181 |         if(xTaskGenericNotifyWait(0,0,0xffffffffUL,&notification_value,1000/portTICK_PERIOD_MS)==pdPASS)
+      |                                                    ^~~~~~~~~~~~~~~~~~~
+      |                                                    |
+      |                                                    uint8_t * {aka unsigned char *}
+In file included from /home/abdellah/esp/esp-idf/components/esp_event/include/esp_event.h:13,
+                 from /home/abdellah/esp/esp-idf/components/esp_wifi/include/esp_wifi.h:56,
+                 from /home/abdellah/esp/esp-idf/components/ep_wifi/ep_wifi.h:1,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.h:5,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.c:1:
+/home/abdellah/esp/esp-idf/components/freertos/FreeRTOS-Kernel/include/freertos/task.h:2704:47: note: expected 'uint32_t *' {aka 'long unsigned int *'} but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+ 2704 |                                    uint32_t * pulNotificationValue,
+      |                                    ~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/home/abdellah/esp/esp-idf/sm_home/main/main.c: In function 'read_pcf8574':
+/home/abdellah/esp/esp-idf/sm_home/main/main.c:237:17: warning: unused variable 'clear_pullup' [-Wunused-variable]
+  237 |         uint8_t clear_pullup = 0xff;
+      |                 ^~~~~~~~~~~~
+/home/abdellah/esp/esp-idf/sm_home/main/main.c: In function 'adjust_lights':
+/home/abdellah/esp/esp-idf/sm_home/main/main.c:251:34: warning: unused variable 'cli' [-Wunused-variable]
+  251 |         esp_mqtt_client_handle_t cli =*((esp_mqtt_client_handle_t *) client) ;
+      |                                  ^~~
+In file included from /home/abdellah/esp/esp-idf/sm_home/main/main.h:5,
+                 from /home/abdellah/esp/esp-idf/sm_home/main/main.c:1:
+/home/abdellah/esp/esp-idf/sm_home/main/main.c: At top level:
+/home/abdellah/esp/esp-idf/components/ep_wifi/ep_wifi.h:52:13: warning: 'wifi_event_handler' declared 'static' but never defined [-Wunused-function]
+   52 | static void wifi_event_handler(void* arg, esp_event_base_t *event, int32_t event_id, void* event_data);
+      |             ^~~~~~~~~~~~~~~~~~
+/home/abdellah/esp/esp-idf/components/ep_wifi/ep_wifi.h:56:13: warning: 'initialize_nvs' declared 'static' but never defined [-Wunused-function]
+   56 | static void initialize_nvs(void);
+      |             ^~~~~~~~~~~~~~
+/home/abdellah/esp/esp-idf/components/ep_wifi/ep_wifi.h:61:13: warning: 'print_auth_mode' declared 'static' but never defined [-Wunused-function]
+   61 | static void print_auth_mode(int authmode);
+      |             ^~~~~~~~~~~~~~~
+[3/8] Linking C static library esp-idf/main/libmain.a
+[4/8] Generating ld/sections.ld
+[5/8] Linking CXX executable sm_home.elf
+[6/8] Generating binary image from built executable
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 25 ELF sections
+Successfully created esp32 image.
+Generated /home/abdellah/esp/esp-idf/sm_home/build/sm_home.bin
+[7/8] cd /home/abdellah/esp/esp-idf/sm_home/build/esp-idf/esptool_py && /home/abdellah/.espressif/python_env/idf5.0_py3.11_env/bin/python /home/abdellah/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/abdellah/esp/esp-idf/sm_home/build/partition_table/partition-table.bin /home/abdellah/esp/esp-idf/sm_home/build/sm_home.bin
+sm_home.bin binary size 0xdc1c0 bytes. Smallest app partition is 0x100000 bytes. 0x23e40 bytes (14%) free.
+[7/8] cd /home/abdellah/esp/esp-idf/components/esptool_py && /home/abdellah/.espressif/tools/cmake/3.24.0/bin/cmake -D IDF_PATH=/home/abdellah/esp/esp-idf -D "SERIAL_TOOL=/home/abdellah/.espressif/python_env/idf5.0_py3.11_env/bin/python;;/home/abdellah/esp/esp-idf/components/esptool_py/esptool/esptool.py;--chip;esp32" -D "SERIAL_TOOL_ARGS=--before=default_reset;--after=hard_reset;write_flash;@flash_args" -D WORKING_DIRECTORY=/home/abdellah/esp/esp-idf/sm_home/build -P /home/abdellah/esp/esp-idf/components/esptool_py/run_serial_tool.cmake
+esptool esp32 -p /dev/ttyUSB0 -b 460800 --before=default_reset --after=hard_reset write_flash --flash_mode dio --flash_freq 40m --flash_size 2MB 0x1000 bootloader/bootloader.bin 0x10000 sm_home.bin 0x8000 partition_table/partition-table.bin
+esptool.py v4.5.1
+Serial port /dev/ttyUSB0
+Connecting....
+Chip is ESP32-D0WDQ6 (revision v1.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+MAC: 30:c6:f7:0e:06:a4
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00007fff...
+Flash will be erased from 0x00010000 to 0x000ecfff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Compressed 26384 bytes to 16452...
+Writing at 0x00001000... (50 %)
+Writing at 0x000076ad... (100 %)
+Wrote 26384 bytes (16452 compressed) at 0x00001000 in 0.8 seconds (effective 268.1 kbit/s)...
+Hash of data verified.
+Compressed 901568 bytes to 573543...
+Writing at 0x00010000... (2 %)
+Writing at 0x0001ca96... (5 %)
+Writing at 0x000247a9... (8 %)
+Writing at 0x00029e4d... (11 %)
+Writing at 0x000351f7... (13 %)
+Writing at 0x0003e379... (16 %)
+Writing at 0x00043c46... (19 %)
+Writing at 0x000497c8... (22 %)
+Writing at 0x0004f300... (25 %)
+Writing at 0x00055151... (27 %)
+Writing at 0x0005ab3a... (30 %)
+Writing at 0x0006047b... (33 %)
+Writing at 0x00065d1f... (36 %)
+Writing at 0x0006c2f7... (38 %)
+Writing at 0x00071dd1... (41 %)
+Writing at 0x000776e0... (44 %)
+Writing at 0x0007c9c3... (47 %)
+Writing at 0x00081edd... (50 %)
+Writing at 0x00087163... (52 %)
+Writing at 0x0008c841... (55 %)
+Writing at 0x00091e87... (58 %)
+Writing at 0x00097599... (61 %)
+Writing at 0x0009d6c9... (63 %)
+Writing at 0x000a2e3e... (66 %)
+Writing at 0x000a87f2... (69 %)
+Writing at 0x000adef4... (72 %)
+Writing at 0x000b3754... (75 %)
+Writing at 0x000b8f9a... (77 %)
+Writing at 0x000beba5... (80 %)
+Writing at 0x000c4477... (83 %)
+Writing at 0x000cd097... (86 %)
+Writing at 0x000d567d... (88 %)
+Writing at 0x000db344... (91 %)
+Writing at 0x000e0ce8... (94 %)
+Writing at 0x000e697c... (97 %)
+Writing at 0x000ec13a... (100 %)
+Wrote 901568 bytes (573543 compressed) at 0x00010000 in 13.6 seconds (effective 531.3 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 103...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (103 compressed) at 0x00008000 in 0.1 seconds (effective 379.0 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...

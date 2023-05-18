@@ -1,0 +1,18 @@
+[1/12] Linking C static library esp-idf/spiffs/libspiffs.a
+[2/12] Linking C static library esp-idf/wifi_provisioning/libwifi_provisioning.a
+[3/12] Performing build step for 'bootloader'
+[1/1] cd /home/abdellah/esp/esp-idf/sm_home/build/bootloader/esp-idf/esptool_py && /home/abdellah/.espressif/python_env/idf5.0_py3.11_env/bin/python /home/abdellah/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 /home/abdellah/esp/esp-idf/sm_home/build/bootloader/bootloader.bin
+Bootloader binary size 0x6710 bytes. 0x8f0 bytes (8%) free.
+[4/10] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/DHT_c.c.obj
+[5/10] Linking C static library esp-idf/main/libmain.a
+[6/10] Generating ld/sections.ld
+[7/10] Building C object CMakeFiles/sm_home.elf.dir/project_elf_src_esp32.c.obj
+[8/10] Linking CXX executable sm_home.elf
+[9/10] Generating binary image from built executable
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 25 ELF sections
+Successfully created esp32 image.
+Generated /home/abdellah/esp/esp-idf/sm_home/build/sm_home.bin
+[10/10] cd /home/abdellah/esp/esp-idf/sm_home/build/esp-idf/esptool_py && /home/abdellah/.espressif/python_env/idf5.0_py3.11_env/bin/python /home/abdellah/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 partition --type app /home/abdellah/esp/esp-idf/sm_home/build/partition_table/partition-table.bin /home/abdellah/esp/esp-idf/sm_home/build/sm_home.bin
+sm_home.bin binary size 0xbb450 bytes. Smallest app partition is 0x100000 bytes. 0x44bb0 bytes (27%) free.
