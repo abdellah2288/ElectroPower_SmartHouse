@@ -1,6 +1,5 @@
-#ifndef _KP
 #include "ep_keypad.h"
-#endif
+
 
 char keypad_array[4][3] = {"123","456","789","*0#"};
 
